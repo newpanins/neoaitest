@@ -71,7 +71,7 @@ const ContactSection = () => {
                 Telegram
               </a>
               <span className="hidden sm:block text-border">|</span>
-              <span className="font-mono text-sm">hello@aiagents.dev</span>
+              <span className="font-mono text-sm">hello@smartai.team</span>
             </div>
           </motion.div>
         </div>

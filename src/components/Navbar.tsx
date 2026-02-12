@@ -11,9 +11,9 @@ const Navbar = () => {
       <div className="container mx-auto px-6 py-4 flex items-center justify-between">
         <a href="#" className="flex items-center gap-2">
           <div className="w-8 h-8 rounded-lg bg-primary/20 flex items-center justify-center glow-primary">
-            <span className="text-primary font-bold font-mono text-sm">AI</span>
+            <span className="text-primary font-bold font-mono text-sm">SA</span>
           </div>
-          <span className="font-bold text-lg text-foreground">AgentDev</span>
+          <span className="font-bold text-lg text-foreground">SmartAI</span>
         </a>
 
         <div className="hidden md:flex items-center gap-8">
