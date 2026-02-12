@@ -3,7 +3,7 @@ import { Send, MessageSquare } from "lucide-react";
 
 const ContactSection = () => {
   return (
-    <section id="contact" className="relative py-32">
+    <section id="contact" className="relative py-32 section-gradient-top">
       <div className="container mx-auto px-6">
         <div className="max-w-3xl mx-auto">
           <motion.div
