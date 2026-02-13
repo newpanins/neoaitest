@@ -62,7 +62,7 @@ const ContactSection = () => {
             </form>
 
             <div className="mt-8 pt-8 border-t border-border flex flex-col sm:flex-row items-center justify-center gap-6 text-muted-foreground">
-              <a href="https://t.me/" className="flex items-center gap-2 hover:text-primary transition-colors">
+              <a href="https://t.me/SmartAiTeam" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-primary transition-colors">
                 <MessageSquare className="w-4 h-4" />
                 Telegram
               </a>
