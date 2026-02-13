@@ -40,9 +40,8 @@ const ProjectsSection = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <span className="font-mono text-sm text-primary tracking-widest uppercase">Портфолио</span>
-          <h2 className="text-4xl md:text-5xl font-bold mt-4 mb-6">
-            Избранные <span className="text-gradient-accent">проекты</span>
+          <h2 className="text-4xl md:text-5xl font-bold">
+            <span className="text-gradient-primary">Портфолио</span>
           </h2>
         </motion.div>
 
