@@ -13,13 +13,9 @@ const ContactSection = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <span className="font-mono text-sm text-primary tracking-widest uppercase">Контакт</span>
-            <h2 className="text-4xl md:text-5xl font-bold mt-4 mb-6">
-              Давайте <span className="text-gradient-primary">создадим</span> вместе
+            <h2 className="text-4xl md:text-5xl font-bold">
+              <span className="text-gradient-primary">Контакт</span>
             </h2>
-            <p className="text-muted-foreground text-lg">
-              Расскажите о вашем проекте — обсудим, как AI-агенты могут помочь вашему бизнесу.
-            </p>
           </motion.div>
 
           <motion.div
