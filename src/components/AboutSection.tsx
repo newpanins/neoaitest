@@ -20,12 +20,8 @@ const AboutSection = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <span className="font-mono text-sm text-primary tracking-widest uppercase">
-            Обо мне
-          </span>
-          <h2 className="text-4xl md:text-5xl font-bold mt-4">
-            Кто будет делать{" "}
-            <span className="text-gradient-primary">ваш проект</span>
+          <h2 className="text-4xl md:text-5xl font-bold">
+            <span className="text-gradient-primary">Обо мне</span>
           </h2>
         </motion.div>
 
