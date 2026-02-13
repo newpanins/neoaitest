@@ -37,11 +37,10 @@ const HeroSection = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.15 }}
         >
-          <span className="text-foreground">Помогаю бизнесу запускать </span>
-          <span className="text-gradient-primary">AI‑агентов,</span>
+          <span className="text-foreground">Помогаю бизнесу </span>
+          <span className="text-gradient-primary">запускать рабочих</span>
           <br />
-          <span className="text-foreground">которые </span>
-          <span className="text-gradient-accent">реально работают</span>
+          <span className="text-gradient-accent">AI‑агентов</span>
         </motion.h1>
 
         <motion.p
