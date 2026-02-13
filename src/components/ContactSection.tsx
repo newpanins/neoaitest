@@ -14,7 +14,7 @@ const ContactSection = () => {
             transition={{ duration: 0.6 }}
           >
             <h2 className="text-4xl md:text-5xl font-bold">
-              <span className="text-gradient-primary">Контакт</span>
+              <span className="text-gradient-primary">Контакт для связи</span>
             </h2>
           </motion.div>
 
