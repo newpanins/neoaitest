@@ -10,14 +10,9 @@ const Navbar = () => {
       transition={{ duration: 0.6, ease: "easeOut" }}
     >
       <div className="container mx-auto px-6 py-4 flex items-center justify-between">
-        <a href="#" className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-lg bg-primary/20 flex items-center justify-center glow-primary">
-            <span className="text-primary font-bold font-mono text-sm">SA</span>
-          </div>
-          <div className="flex flex-col">
-            <span className="font-bold text-lg text-foreground leading-tight">SmartAI</span>
-            <span className="text-[10px] text-shimmer leading-tight tracking-wide font-medium">Умные решения для вашего бизнеса</span>
-          </div>
+        <a href="#" className="flex flex-col">
+          <span className="font-bold text-lg text-foreground leading-tight">SmartAI</span>
+          <span className="text-[10px] text-shimmer leading-tight tracking-wide font-medium">Умные решения для вашего бизнеса</span>
         </a>
 
         <div className="hidden md:flex items-center gap-8">
