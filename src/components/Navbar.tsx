@@ -34,7 +34,7 @@ const Navbar = () => {
 
         <div className="flex items-center gap-3">
           <a
-            href="https://t.me/"
+            href="https://t.me/SmartAiTeam"
             target="_blank"
             rel="noopener noreferrer"
             className="w-10 h-10 rounded-lg flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/10 transition-all"
