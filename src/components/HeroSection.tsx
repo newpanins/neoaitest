@@ -63,18 +63,21 @@ const HeroSection = () => {
         </motion.p>
 
         <motion.div
-          className="flex flex-col sm:flex-row gap-4 justify-center"
+          className="flex flex-col sm:flex-row gap-4 justify-center items-center"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.45 }}
         >
+          <div className="flex flex-col items-center gap-2">
+            <a
+              href="#contact"
+              className="px-10 py-5 rounded-lg bg-primary text-primary-foreground font-bold text-xl glow-primary hover:brightness-110 hover:scale-[1.03] transition-all duration-300"
+            >
+              Обсудить проект
+            </a>
+            <span className="text-xs text-muted-foreground font-mono">Ответ в течение 24 часов</span>
+          </div>
           <a
-            href="#contact"
-            className="px-8 py-4 rounded-lg bg-primary text-primary-foreground font-semibold text-lg glow-primary hover:brightness-110 transition-all duration-300"
-          >
-            Обсудить проект
-          </a>
-           <a
             href="#projects"
             className="px-8 py-4 rounded-lg glass text-foreground font-semibold text-lg hover:border-primary/40 transition-all duration-300"
           >
@@ -82,6 +85,24 @@ const HeroSection = () => {
           </a>
         </motion.div>
 
+        {/* Stats */}
+        <motion.div
+          className="grid grid-cols-3 gap-8 max-w-lg mx-auto mt-20"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 0.7 }}
+        >
+          {[
+            { value: "50+", label: "Реализованных решений" },
+            { value: "3 года", label: "В AI‑разработке" },
+            { value: "24/7", label: "Агенты без перерывов" },
+          ].map((stat) => (
+            <div key={stat.label} className="text-center">
+              <div className="text-2xl md:text-3xl font-bold text-gradient-primary font-mono">{stat.value}</div>
+              <div className="text-sm text-muted-foreground mt-1">{stat.label}</div>
+            </div>
+          ))}
+        </motion.div>
       </div>
 
       {/* Scroll indicator */}

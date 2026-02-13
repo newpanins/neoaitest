@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { MessageSquare } from "lucide-react";
 
 const Navbar = () => {
   return (
@@ -19,6 +20,7 @@ const Navbar = () => {
         <div className="hidden md:flex items-center gap-8">
           {[
             { href: "#services", label: "Услуги" },
+            { href: "#about", label: "Обо мне" },
             { href: "#projects", label: "Проекты" },
             { href: "#contact", label: "Контакт" },
           ].map((link) => (
@@ -32,12 +34,23 @@ const Navbar = () => {
           ))}
         </div>
 
-        <a
-          href="#contact"
-          className="px-5 py-2 rounded-lg bg-primary/10 text-primary text-sm font-medium hover:bg-primary/20 transition-all border border-primary/20"
-        >
-          Связаться
-        </a>
+        <div className="flex items-center gap-3">
+          <a
+            href="https://t.me/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-10 h-10 rounded-lg flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/10 transition-all"
+            aria-label="Telegram"
+          >
+            <MessageSquare className="w-5 h-5" />
+          </a>
+          <a
+            href="#contact"
+            className="px-5 py-2 rounded-lg bg-primary/10 text-primary text-sm font-medium hover:bg-primary/20 transition-all border border-primary/20"
+          >
+            Связаться
+          </a>
+        </div>
       </div>
     </motion.nav>
   );
