@@ -55,13 +55,9 @@ const ServicesSection = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <span className="font-mono text-sm text-primary tracking-widest uppercase">Услуги</span>
-          <h2 className="text-4xl md:text-5xl font-bold mt-4 mb-6">
-            Что я <span className="text-gradient-primary">создаю</span>
+          <h2 className="text-4xl md:text-5xl font-bold">
+            <span className="text-gradient-primary">Услуги</span>
           </h2>
-          <p className="text-muted-foreground text-lg max-w-xl mx-auto">
-            Полный цикл разработки AI-агентов — от проектирования архитектуры до деплоя и мониторинга.
-          </p>
         </motion.div>
 
         <motion.div
