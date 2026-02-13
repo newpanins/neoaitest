@@ -30,7 +30,7 @@ const Navbar = () => {
             <a
               key={link.href}
               href={link.href}
-              className="text-sm text-shimmer font-medium"
+              className="text-sm text-muted-foreground hover-shimmer"
             >
               {link.label}
             </a>
