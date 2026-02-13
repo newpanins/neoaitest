@@ -32,8 +32,7 @@ const Navbar = () => {
           ))}
         </div>
 
-        <div className="flex items-center gap-3">
-          <a
+        <a
             href="https://t.me/SmartAiTeam"
             target="_blank"
             rel="noopener noreferrer"
@@ -42,13 +41,6 @@ const Navbar = () => {
           >
             <MessageSquare className="w-5 h-5" />
           </a>
-          <a
-            href="#contact"
-            className="px-5 py-2 rounded-lg bg-primary/10 text-primary text-sm font-medium hover:bg-primary/20 transition-all border border-primary/20"
-          >
-            Связаться
-          </a>
-        </div>
       </div>
     </motion.nav>
   );
