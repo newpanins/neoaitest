@@ -38,9 +38,9 @@ const HeroSection = () => {
           transition={{ duration: 0.8, delay: 0.15 }}
         >
           <span className="text-foreground">Помогаю бизнесу </span>
-          <span className="text-gradient-primary">запускать рабочих</span>
-          <br />
-          <span className="text-gradient-accent">AI‑агентов</span>
+          <span className="text-gradient-primary whitespace-nowrap">запускать рабочих</span>
+          <br className="md:hidden" />
+          <span className="text-gradient-accent"> AI‑агентов</span>
         </motion.h1>
 
         <motion.p
