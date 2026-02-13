@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Send, MessageSquare } from "lucide-react";
+import { Send, Mail, MessageSquare } from "lucide-react";
 
 const ContactSection = () => {
   return (
@@ -61,13 +61,13 @@ const ContactSection = () => {
               </button>
             </form>
 
-            <div className="mt-8 pt-8 border-t border-border flex flex-col sm:flex-row items-center justify-center gap-6 text-muted-foreground">
-              <a href="https://t.me/SmartAiTeam" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-primary transition-colors">
-                <MessageSquare className="w-4 h-4" />
-                Telegram
+            <div className="mt-8 pt-8 border-t border-border flex items-center justify-center gap-6">
+              <a href="mailto:Kristinalihickaa@gmail.com" className="w-12 h-12 rounded-full flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/10 transition-all" aria-label="Email">
+                <Mail className="w-6 h-6" />
               </a>
-              <span className="hidden sm:block text-border">|</span>
-              <span className="font-mono text-sm">Kristinalihickaa@gmail.com</span>
+              <a href="https://t.me/SmartAiTeam" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/10 transition-all" aria-label="Telegram">
+                <MessageSquare className="w-6 h-6" />
+              </a>
             </div>
           </motion.div>
         </div>
