@@ -16,7 +16,7 @@ const Navbar = () => {
           </div>
           <div className="flex flex-col">
             <span className="font-bold text-lg text-foreground leading-tight">SmartAI</span>
-            <span className="text-[10px] text-muted-foreground leading-tight">Умные решения для вашего бизнеса</span>
+            <span className="text-[10px] text-primary/80 leading-tight tracking-wide font-medium">Умные решения для вашего бизнеса</span>
           </div>
         </a>
 
