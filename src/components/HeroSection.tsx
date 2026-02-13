@@ -32,15 +32,15 @@ const HeroSection = () => {
         </motion.div>
 
         <motion.h1
-          className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-6 leading-[1.05]"
+          className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-6 leading-[1.1]"
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.15 }}
         >
           <span className="text-foreground">Помогаю бизнесу</span>
           <br />
-          <span className="text-gradient-primary whitespace-nowrap">запускать рабочих </span>
-          <span className="text-gradient-accent whitespace-nowrap">AI‑агентов</span>
+          <span className="text-gradient-primary">запускать рабочих</span>{" "}
+          <span className="text-gradient-accent">AI‑агентов</span>
         </motion.h1>
 
         <motion.p
