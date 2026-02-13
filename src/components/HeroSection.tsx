@@ -76,10 +76,12 @@ const HeroSection = () => {
         >
           <div className="flex flex-col items-center gap-2">
             <a
-              href="#contact"
+              href="https://t.me/SmartAiTeam"
+              target="_blank"
+              rel="noopener noreferrer"
               className="px-10 py-5 rounded-lg bg-primary text-primary-foreground font-bold text-xl glow-primary hover:brightness-110 hover:scale-[1.03] transition-all duration-300"
             >
-              Обсудить проект
+              Связь с моим агентом
             </a>
             <span className="text-xs text-muted-foreground font-mono">Ответ в течение 24 часов</span>
           </div>
