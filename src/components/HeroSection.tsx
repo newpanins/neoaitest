@@ -81,7 +81,7 @@ const HeroSection = () => {
               rel="noopener noreferrer"
               className="px-10 py-5 rounded-lg bg-primary text-primary-foreground font-bold text-xl glow-primary hover:brightness-110 hover:scale-[1.03] transition-all duration-300"
             >
-              Связь с моим агентом
+              Связаться
             </a>
             <span className="text-xs text-muted-foreground font-mono">Ответ в течение 24 часов</span>
           </div>
