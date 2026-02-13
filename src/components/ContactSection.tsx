@@ -23,15 +23,6 @@ const ContactSection = () => {
     <section id="contact" className="relative py-32 section-gradient-top">
       <div className="container mx-auto px-6">
         <div className="max-w-2xl mx-auto text-center">
-          <motion.p
-            className="text-sm font-medium tracking-widest uppercase text-primary mb-4"
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
-            Связаться
-          </motion.p>
           <motion.h2
             className="text-4xl md:text-5xl font-bold mb-4"
             initial={{ opacity: 0, y: 20 }}
