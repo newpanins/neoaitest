@@ -71,9 +71,9 @@ const PlexusBackground = () => {
           const dy = particles[i].y - particles[j].y;
           const dist = Math.sqrt(dx * dx + dy * dy);
           if (dist < CONNECTION_DIST) {
-            const opacity = (1 - dist / CONNECTION_DIST) * 0.2;
+            const opacity = (1 - dist / CONNECTION_DIST) * 0.25;
             ctx.strokeStyle = `rgba(80, 210, 220, ${opacity})`;
-            ctx.lineWidth = 0.5;
+            ctx.lineWidth = 0.6;
             ctx.beginPath();
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
@@ -85,14 +85,14 @@ const PlexusBackground = () => {
       // Draw particles with glow
       for (const p of particles) {
         const gradient = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.radius * 3);
-        gradient.addColorStop(0, "rgba(80, 220, 230, 0.15)");
+        gradient.addColorStop(0, "rgba(80, 220, 230, 0.18)");
         gradient.addColorStop(1, "rgba(80, 220, 230, 0)");
         ctx.fillStyle = gradient;
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.radius * 3, 0, Math.PI * 2);
         ctx.fill();
 
-        ctx.fillStyle = "rgba(100, 230, 240, 0.35)";
+        ctx.fillStyle = "rgba(100, 230, 240, 0.42)";
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
         ctx.fill();
