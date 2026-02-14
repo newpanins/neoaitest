@@ -101,9 +101,9 @@ const PlexusBackground = () => {
           const dy = particles[i].y - particles[j].y;
           const dist = Math.sqrt(dx * dx + dy * dy);
           if (dist < CONNECTION_DIST) {
-            const opacity = (1 - dist / CONNECTION_DIST) * 0.3;
+            const opacity = (1 - dist / CONNECTION_DIST) * 0.36;
             ctx.strokeStyle = `rgba(80, 210, 220, ${opacity})`;
-            ctx.lineWidth = 0.7;
+            ctx.lineWidth = 0.8;
             ctx.beginPath();
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
@@ -115,14 +115,14 @@ const PlexusBackground = () => {
       // Draw particles with glow
       for (const p of particles) {
         const gradient = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.radius * 3);
-        gradient.addColorStop(0, "rgba(80, 220, 230, 0.22)");
+        gradient.addColorStop(0, "rgba(80, 220, 230, 0.26)");
         gradient.addColorStop(1, "rgba(80, 220, 230, 0)");
         ctx.fillStyle = gradient;
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.radius * 3, 0, Math.PI * 2);
         ctx.fill();
 
-        ctx.fillStyle = "rgba(100, 230, 240, 0.5)";
+        ctx.fillStyle = "rgba(100, 230, 240, 0.6)";
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
         ctx.fill();
@@ -137,9 +137,9 @@ const PlexusBackground = () => {
         if (word.y < 20 || word.y > h) word.vy *= -1;
 
         // Slow fade in/out
-        word.opacity += word.fadeDir * 0.0003;
-        if (word.opacity > 0.16) { word.opacity = 0.16; word.fadeDir = -1; }
-        if (word.opacity < 0.03) { word.opacity = 0.03; word.fadeDir = 1; }
+        word.opacity += word.fadeDir * 0.0004;
+        if (word.opacity > 0.22) { word.opacity = 0.22; word.fadeDir = -1; }
+        if (word.opacity < 0.05) { word.opacity = 0.05; word.fadeDir = 1; }
 
         ctx.fillStyle = `rgba(100, 230, 240, ${word.opacity})`;
         ctx.fillText(word.text, word.x, word.y);
