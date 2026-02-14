@@ -11,6 +11,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background noise-bg relative">
       <PlexusBackground />
+      <div className="relative" style={{ zIndex: 2 }}>
       <Navbar />
       <HeroSection />
       <AboutSection />
@@ -18,6 +19,7 @@ const Index = () => {
       <ProjectsSection />
       <ContactSection />
       <Footer />
+      </div>
     </div>
   );
 };
