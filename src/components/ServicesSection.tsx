@@ -58,7 +58,7 @@ const item = {
 
 const ServicesSection = () => {
   return (
-    <section id="services" className="relative py-32 section-gradient-top">
+    <section id="services" className="relative py-32">
       <div className="container mx-auto px-6">
         <motion.div
           className="text-center mb-16"
