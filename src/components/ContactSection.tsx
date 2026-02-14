@@ -25,25 +25,27 @@ const ContactSection = () => {
     <section id="contact" className="relative py-32 section-gradient-top">
       <div className="container mx-auto px-6 relative">
         {/* AI Agent Left */}
-        <motion.img
-          src={agentLeft}
-          alt="AI Agent"
-          className="hidden lg:block absolute left-0 bottom-0 w-48 xl:w-56 opacity-70 pointer-events-none select-none"
+        <motion.div
+          className="hidden lg:block absolute left-0 bottom-0 w-48 xl:w-56 pointer-events-none select-none"
           initial={{ opacity: 0, x: -40 }}
-          whileInView={{ opacity: 0.7, x: 0 }}
+          whileInView={{ opacity: 0.6, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.3 }}
-        />
+          style={{ maskImage: 'linear-gradient(to top, transparent 0%, black 30%, black 70%, transparent 100%), linear-gradient(to right, transparent 0%, black 40%)', maskComposite: 'intersect', WebkitMaskImage: 'linear-gradient(to top, transparent 0%, black 30%, black 70%, transparent 100%), linear-gradient(to right, transparent 0%, black 40%)', WebkitMaskComposite: 'source-in' }}
+        >
+          <img src={agentLeft} alt="AI Agent" className="w-full h-full object-contain mix-blend-lighten" />
+        </motion.div>
         {/* AI Agent Right */}
-        <motion.img
-          src={agentRight}
-          alt="AI Agent"
-          className="hidden lg:block absolute right-0 bottom-0 w-48 xl:w-56 opacity-70 pointer-events-none select-none"
+        <motion.div
+          className="hidden lg:block absolute right-0 bottom-0 w-48 xl:w-56 pointer-events-none select-none"
           initial={{ opacity: 0, x: 40 }}
-          whileInView={{ opacity: 0.7, x: 0 }}
+          whileInView={{ opacity: 0.6, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.4 }}
-        />
+          style={{ maskImage: 'linear-gradient(to top, transparent 0%, black 30%, black 70%, transparent 100%), linear-gradient(to left, transparent 0%, black 40%)', maskComposite: 'intersect', WebkitMaskImage: 'linear-gradient(to top, transparent 0%, black 30%, black 70%, transparent 100%), linear-gradient(to left, transparent 0%, black 40%)', WebkitMaskComposite: 'source-in' }}
+        >
+          <img src={agentRight} alt="AI Agent" className="w-full h-full object-contain mix-blend-lighten" />
+        </motion.div>
         <div className="max-w-2xl mx-auto text-center">
           <motion.h2
             className="text-4xl md:text-5xl font-bold mb-4"
