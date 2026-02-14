@@ -5,10 +5,12 @@ import ServicesSection from "@/components/ServicesSection";
 import ProjectsSection from "@/components/ProjectsSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
+import PlexusBackground from "@/components/PlexusBackground";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background noise-bg">
+    <div className="min-h-screen bg-background noise-bg relative">
+      <PlexusBackground />
       <Navbar />
       <HeroSection />
       <AboutSection />
