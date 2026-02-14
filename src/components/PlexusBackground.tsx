@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useCallback } from "react";
 
 interface Particle {
   x: number;
@@ -10,6 +10,20 @@ interface Particle {
 
 const PlexusBackground = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const particlesRef = useRef<Particle[]>([]);
+  const animationRef = useRef<number>(0);
+
+  const initParticles = useCallback((width: number, height: number) => {
+    const count = Math.floor((width * height) / 12000);
+    const clamped = Math.max(60, Math.min(count, 200));
+    particlesRef.current = Array.from({ length: clamped }, () => ({
+      x: Math.random() * width,
+      y: Math.random() * height,
+      vx: (Math.random() - 0.5) * 0.4,
+      vy: (Math.random() - 0.5) * 0.4,
+      radius: Math.random() * 2 + 1,
+    }));
+  }, []);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -17,30 +31,38 @@ const PlexusBackground = () => {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    let animationId: number;
-    let particles: Particle[] = [];
-    const PARTICLE_COUNT = 80;
-    const CONNECTION_DIST = 180;
-    const SPEED = 0.3;
+    const CONNECTION_DIST = 200;
 
     const resize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = document.documentElement.scrollHeight;
+      const dpr = window.devicePixelRatio || 1;
+      canvas.width = window.innerWidth * dpr;
+      canvas.height = window.innerHeight * dpr;
+      canvas.style.width = window.innerWidth + "px";
+      canvas.style.height = window.innerHeight + "px";
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      if (particlesRef.current.length === 0) {
+        initParticles(window.innerWidth, window.innerHeight);
+      }
     };
 
-    const init = () => {
-      resize();
-      particles = Array.from({ length: PARTICLE_COUNT }, () => ({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        vx: (Math.random() - 0.5) * SPEED,
-        vy: (Math.random() - 0.5) * SPEED,
-        radius: Math.random() * 1.5 + 0.5,
-      }));
-    };
+    resize();
 
-    const draw = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    const loop = () => {
+      const w = window.innerWidth;
+      const h = window.innerHeight;
+      ctx.clearRect(0, 0, w, h);
+
+      const particles = particlesRef.current;
+
+      // Update positions
+      for (const p of particles) {
+        p.x += p.vx;
+        p.y += p.vy;
+        if (p.x < 0) { p.x = 0; p.vx *= -1; }
+        if (p.x > w) { p.x = w; p.vx *= -1; }
+        if (p.y < 0) { p.y = 0; p.vy *= -1; }
+        if (p.y > h) { p.y = h; p.vy *= -1; }
+      }
 
       // Draw connections
       for (let i = 0; i < particles.length; i++) {
@@ -49,9 +71,9 @@ const PlexusBackground = () => {
           const dy = particles[i].y - particles[j].y;
           const dist = Math.sqrt(dx * dx + dy * dy);
           if (dist < CONNECTION_DIST) {
-            const opacity = (1 - dist / CONNECTION_DIST) * 0.35;
-            ctx.strokeStyle = `rgba(140, 100, 255, ${opacity})`;
-            ctx.lineWidth = 0.5;
+            const opacity = (1 - dist / CONNECTION_DIST) * 0.5;
+            ctx.strokeStyle = `rgba(130, 90, 220, ${opacity})`;
+            ctx.lineWidth = 0.8;
             ctx.beginPath();
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
@@ -60,51 +82,40 @@ const PlexusBackground = () => {
         }
       }
 
-      // Draw particles
+      // Draw particles with glow
       for (const p of particles) {
-        ctx.fillStyle = "rgba(160, 120, 255, 0.6)";
+        // Glow
+        const gradient = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.radius * 4);
+        gradient.addColorStop(0, "rgba(160, 120, 255, 0.4)");
+        gradient.addColorStop(1, "rgba(160, 120, 255, 0)");
+        ctx.fillStyle = gradient;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius * 4, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Core
+        ctx.fillStyle = "rgba(180, 150, 255, 0.8)";
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
         ctx.fill();
       }
+
+      animationRef.current = requestAnimationFrame(loop);
     };
 
-    const update = () => {
-      for (const p of particles) {
-        p.x += p.vx;
-        p.y += p.vy;
-        if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
-        if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
-      }
-    };
-
-    const loop = () => {
-      update();
-      draw();
-      animationId = requestAnimationFrame(loop);
-    };
-
-    init();
-    loop();
-
-    const resizeObserver = new ResizeObserver(() => {
-      resize();
-    });
-    resizeObserver.observe(document.documentElement);
+    animationRef.current = requestAnimationFrame(loop);
     window.addEventListener("resize", resize);
 
     return () => {
-      cancelAnimationFrame(animationId);
-      resizeObserver.disconnect();
+      cancelAnimationFrame(animationRef.current);
       window.removeEventListener("resize", resize);
     };
-  }, []);
+  }, [initParticles]);
 
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 w-full h-full pointer-events-none"
-      style={{ opacity: 0.7, zIndex: 0 }}
+      style={{ position: "fixed", inset: 0, width: "100%", height: "100%", pointerEvents: "none", zIndex: 0 }}
     />
   );
 };
