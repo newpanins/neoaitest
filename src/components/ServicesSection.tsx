@@ -1,34 +1,46 @@
 import { motion } from "framer-motion";
 import { Bot, Brain, Workflow, Zap, Database, Shield } from "lucide-react";
+import serviceAgents from "@/assets/service-agents.jpg";
+import serviceRag from "@/assets/service-rag.jpg";
+import serviceMultiagent from "@/assets/service-multiagent.jpg";
+import serviceAutomation from "@/assets/service-automation.jpg";
+import serviceIntegration from "@/assets/service-integration.jpg";
+import serviceSecurity from "@/assets/service-security.jpg";
 
 const services = [
   {
     icon: Bot,
+    image: serviceAgents,
     title: "Автономные агенты",
     description: "Виртуальные сотрудники, которые сами выполняют задачи, принимают решения и взаимодействуют с сервисами (CRM, почта, мессенджеры).",
   },
   {
     icon: Brain,
+    image: serviceRag,
     title: "RAG‑системы",
     description: "Системы, которые ищут ответы в ваших документах и базе знаний, а не в открытом интернете. Подходят для юридических отделов, поддержки, внутренних баз знаний.",
   },
   {
     icon: Workflow,
+    image: serviceMultiagent,
     title: "Multi‑Agent системы",
     description: "Команда из нескольких AI‑агентов, которые распределяют задачи между собой и решают сложные многоэтапные процессы.",
   },
   {
     icon: Zap,
+    image: serviceAutomation,
     title: "Автоматизация процессов",
     description: "Заменяю ручные рутинные операции умными сценариями и агентами, чтобы команда тратила время на важные задачи.",
   },
   {
     icon: Database,
+    image: serviceIntegration,
     title: "Интеграция с данными",
     description: "Подключаю агентов к вашим CRM, базам данных, Notion, Google Sheets и другим системам.",
   },
   {
     icon: Shield,
+    image: serviceSecurity,
     title: "Безопасность и контроль",
     description: "Добавляю ограничения, мониторинг и логи действий агентов, чтобы они работали предсказуемо и безопасно.",
   },
@@ -73,6 +85,9 @@ const ServicesSection = () => {
               variants={item}
               className="group p-8 rounded-2xl glass hover:glow-border transition-all duration-500 cursor-default"
             >
+              <div className="w-full h-32 rounded-xl overflow-hidden mb-5">
+                <img src={service.image} alt={service.title} className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500" />
+              </div>
               <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5 group-hover:bg-primary/20 transition-colors duration-300">
                 <service.icon className="w-6 h-6 text-primary" />
               </div>
