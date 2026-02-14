@@ -1,27 +1,35 @@
 import { motion } from "framer-motion";
 import { ExternalLink } from "lucide-react";
+import projectSales from "@/assets/project-sales.jpg";
+import projectDocument from "@/assets/project-document.jpg";
+import projectDevops from "@/assets/project-devops.jpg";
+import projectResearch from "@/assets/project-research.jpg";
 
 const projects = [
   {
     title: "AI Sales Agent",
+    image: projectSales,
     description: "Помогает отделу продаж: отвечает на обращения, квалифицирует лидов и назначает встречи, не теряя заявки ночью и в выходные.",
     tags: ["LangChain", "GPT-4", "Zapier"],
     status: "Production",
   },
   {
     title: "Document Analyst",
+    image: projectDocument,
     description: "Ускоряет работу с юридическими документами: находит ключевые условия, отвечает на вопросы по договору и снижает время анализа.",
     tags: ["LlamaIndex", "Pinecone", "Claude"],
     status: "Production",
   },
   {
     title: "DevOps Agent",
+    image: projectDevops,
     description: "Следит за инфраструктурой, реагирует на инциденты и готовит отчёты, снижая нагрузку на DevOps‑команду.",
     tags: ["CrewAI", "Kubernetes", "Grafana"],
     status: "Beta",
   },
   {
     title: "Research Assistant",
+    image: projectResearch,
     description: "Собирает и структурирует информацию о рынке и конкурентах, готовит черновики отчётов и презентаций.",
     tags: ["AutoGPT", "Serper", "PostgreSQL"],
     status: "Production",
@@ -55,6 +63,9 @@ const ProjectsSection = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
             >
+              <div className="w-full h-36 rounded-xl overflow-hidden mb-5">
+                <img src={project.image} alt={project.title} className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500" />
+              </div>
               <div className="flex items-center justify-between mb-4">
                 <span className={`text-xs font-mono px-3 py-1 rounded-full ${
                   project.status === "Production"
