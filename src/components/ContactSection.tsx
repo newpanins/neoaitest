@@ -14,7 +14,7 @@ const contactLinks = [
   {
     icon: Mail,
     label: "Email",
-    value: "Kristinalihickaa@gmail.com",
+    value: "kristinalihickaa@gmail.com",
     href: "mailto:Kristinalihickaa@gmail.com",
     description: "Для детальных запросов и ТЗ",
   },
