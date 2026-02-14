@@ -56,17 +56,14 @@ const HeroSection = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.45 }}
         >
-          <div className="flex flex-col items-center gap-2">
-            <a
-              href="https://t.me/SmartAiTeam"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-10 py-5 rounded-lg bg-primary text-primary-foreground font-bold text-xl glow-primary hover:brightness-110 hover:scale-[1.03] transition-all duration-300"
-            >
-              Связаться
-            </a>
-            <span className="text-xs text-muted-foreground font-mono">Ответ в течение 24 часов</span>
-          </div>
+          <a
+            href="https://t.me/SmartAiTeam"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-10 py-5 rounded-lg bg-primary text-primary-foreground font-bold text-xl glow-primary hover:brightness-110 hover:scale-[1.03] transition-all duration-300"
+          >
+            Связаться
+          </a>
           <a
             href="#projects"
             className="px-10 py-5 rounded-lg glass text-foreground font-bold text-xl hover:border-primary/40 transition-all duration-300"
@@ -74,6 +71,14 @@ const HeroSection = () => {
             Посмотреть проекты
           </a>
         </motion.div>
+        <motion.p
+          className="text-xs text-muted-foreground font-mono mt-3 text-center"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.55 }}
+        >
+          Ответ в течение 24 часов
+        </motion.p>
 
         {/* Stats */}
         <motion.div
