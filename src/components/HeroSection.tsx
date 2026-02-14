@@ -69,7 +69,7 @@ const HeroSection = () => {
           </div>
           <a
             href="#projects"
-            className="px-8 py-4 rounded-lg glass text-foreground font-semibold text-lg hover:border-primary/40 transition-all duration-300"
+            className="px-10 py-5 rounded-lg glass text-foreground font-bold text-xl hover:border-primary/40 transition-all duration-300"
           >
             Посмотреть проекты
           </a>
