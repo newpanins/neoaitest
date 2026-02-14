@@ -8,9 +8,28 @@ interface Particle {
   radius: number;
 }
 
+interface FloatingWord {
+  x: number;
+  y: number;
+  vx: number;
+  vy: number;
+  text: string;
+  opacity: number;
+  fadeDir: number;
+}
+
+const AI_KEYWORDS = [
+  "LangChain", "RAG", "GPT-4", "Agent", "NLP", "LLM",
+  "Vector DB", "Embedding", "Prompt", "Fine-tune",
+  "Multi-Agent", "CrewAI", "AutoGPT", "Claude",
+  "Pinecone", "Neural", "Transformer", "Token",
+  "API", "Pipeline", "Workflow", "AI", "ML",
+];
+
 const PlexusBackground = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const particlesRef = useRef<Particle[]>([]);
+  const wordsRef = useRef<FloatingWord[]>([]);
   const animationRef = useRef<number>(0);
 
   const initParticles = useCallback((width: number, height: number) => {
@@ -22,6 +41,17 @@ const PlexusBackground = () => {
       vx: (Math.random() - 0.5) * 0.4,
       vy: (Math.random() - 0.5) * 0.4,
       radius: Math.random() * 2 + 1,
+    }));
+
+    const wordCount = Math.max(8, Math.min(Math.floor(clamped / 5), 20));
+    wordsRef.current = Array.from({ length: wordCount }, () => ({
+      x: Math.random() * width,
+      y: Math.random() * height,
+      vx: (Math.random() - 0.5) * 0.15,
+      vy: (Math.random() - 0.5) * 0.15,
+      text: AI_KEYWORDS[Math.floor(Math.random() * AI_KEYWORDS.length)],
+      opacity: Math.random() * 0.12 + 0.04,
+      fadeDir: Math.random() > 0.5 ? 1 : -1,
     }));
   }, []);
 
@@ -96,6 +126,23 @@ const PlexusBackground = () => {
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
         ctx.fill();
+      }
+      // Draw floating keywords
+      ctx.font = "11px 'JetBrains Mono', monospace";
+      ctx.textAlign = "center";
+      for (const word of wordsRef.current) {
+        word.x += word.vx;
+        word.y += word.vy;
+        if (word.x < 0 || word.x > w) word.vx *= -1;
+        if (word.y < 20 || word.y > h) word.vy *= -1;
+
+        // Slow fade in/out
+        word.opacity += word.fadeDir * 0.0003;
+        if (word.opacity > 0.16) { word.opacity = 0.16; word.fadeDir = -1; }
+        if (word.opacity < 0.03) { word.opacity = 0.03; word.fadeDir = 1; }
+
+        ctx.fillStyle = `rgba(100, 230, 240, ${word.opacity})`;
+        ctx.fillText(word.text, word.x, word.y);
       }
 
       animationRef.current = requestAnimationFrame(loop);
