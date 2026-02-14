@@ -137,9 +137,9 @@ const PlexusBackground = () => {
         if (word.y < 20 || word.y > h) word.vy *= -1;
 
         // Slow fade in/out
-        word.opacity += word.fadeDir * 0.0004;
-        if (word.opacity > 0.22) { word.opacity = 0.22; word.fadeDir = -1; }
-        if (word.opacity < 0.05) { word.opacity = 0.05; word.fadeDir = 1; }
+        word.opacity += word.fadeDir * 0.0005;
+        if (word.opacity > 0.33) { word.opacity = 0.33; word.fadeDir = -1; }
+        if (word.opacity < 0.08) { word.opacity = 0.08; word.fadeDir = 1; }
 
         ctx.fillStyle = `rgba(100, 230, 240, ${word.opacity})`;
         ctx.fillText(word.text, word.x, word.y);
