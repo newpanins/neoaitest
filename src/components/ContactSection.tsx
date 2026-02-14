@@ -22,7 +22,7 @@ const contactLinks = [
 
 const ContactSection = () => {
   return (
-    <section id="contact" className="relative py-32 section-gradient-top">
+    <section id="contact" className="relative py-32">
       <div className="container mx-auto px-6 relative">
         {/* AI Agent Left */}
         <motion.div

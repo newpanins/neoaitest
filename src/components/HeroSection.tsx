@@ -3,15 +3,8 @@ import { motion } from "framer-motion";
 const HeroSection = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Gradient overlay instead of video */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-background/60 to-background" />
-
-      {/* Grid overlay */}
-      <div className="absolute inset-0 grid-bg opacity-30" />
-
-      {/* Floating orbs */}
-      <div className="absolute top-1/4 left-1/4 w-64 h-64 rounded-full bg-primary/5 blur-[100px] animate-float" />
-      <div className="absolute bottom-1/3 right-1/4 w-96 h-96 rounded-full bg-accent/5 blur-[120px] animate-float-slow" />
+      {/* Subtle gradient for readability */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/40 to-background/60" />
 
       <div className="relative z-10 container mx-auto px-6 text-center">
         <motion.div

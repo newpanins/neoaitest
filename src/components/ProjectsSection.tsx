@@ -38,8 +38,8 @@ const projects = [
 
 const ProjectsSection = () => {
   return (
-    <section id="projects" className="relative py-32 section-gradient-bottom">
-      <div className="absolute inset-0 grid-bg opacity-20" />
+    <section id="projects" className="relative py-32">
+      <div className="absolute inset-0 grid-bg opacity-10" />
       <div className="container mx-auto px-6 relative">
         <motion.div
           className="text-center mb-16"
