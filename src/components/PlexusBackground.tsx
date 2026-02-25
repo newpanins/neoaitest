@@ -74,8 +74,8 @@ const PlexusBackground = () => {
       y: Math.random() * height,
       vx: (Math.random() - 0.5) * 0.2,
       vy: (Math.random() - 0.5) * 0.2,
-      size: Math.random() * 20 + 25,
-      opacity: Math.random() * 0.1 + 0.06,
+      size: Math.random() * 30 + 40,
+      opacity: Math.random() * 0.15 + 0.15,
       fadeDir: Math.random() > 0.5 ? 1 : -1,
       rotation: Math.random() * 0.2 - 0.1,
       rotSpeed: (Math.random() - 0.5) * 0.002,
@@ -221,9 +221,9 @@ const PlexusBackground = () => {
         robot.rotation += robot.rotSpeed;
         if (robot.x < robot.size || robot.x > w - robot.size) robot.vx *= -1;
         if (robot.y < robot.size || robot.y > h - robot.size) robot.vy *= -1;
-        robot.opacity += robot.fadeDir * 0.0003;
-        if (robot.opacity > 0.2) { robot.opacity = 0.2; robot.fadeDir = -1; }
-        if (robot.opacity < 0.05) { robot.opacity = 0.05; robot.fadeDir = 1; }
+        robot.opacity += robot.fadeDir * 0.0004;
+        if (robot.opacity > 0.45) { robot.opacity = 0.45; robot.fadeDir = -1; }
+        if (robot.opacity < 0.12) { robot.opacity = 0.12; robot.fadeDir = 1; }
         drawRobot(ctx, robot.x, robot.y, robot.size, robot.opacity, robot.variant, robot.rotation);
       }
 
