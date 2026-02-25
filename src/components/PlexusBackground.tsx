@@ -18,6 +18,19 @@ interface FloatingWord {
   fadeDir: number;
 }
 
+interface FloatingRobot {
+  x: number;
+  y: number;
+  vx: number;
+  vy: number;
+  size: number;
+  opacity: number;
+  fadeDir: number;
+  rotation: number;
+  rotSpeed: number;
+  variant: number;
+}
+
 const AI_KEYWORDS = [
   "LangChain", "RAG", "GPT-4", "Agent", "NLP", "LLM",
   "Vector DB", "Embedding", "Prompt", "Fine-tune",
@@ -30,6 +43,7 @@ const PlexusBackground = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const particlesRef = useRef<Particle[]>([]);
   const wordsRef = useRef<FloatingWord[]>([]);
+  const robotsRef = useRef<FloatingRobot[]>([]);
   const animationRef = useRef<number>(0);
 
   const initParticles = useCallback((width: number, height: number) => {
@@ -52,6 +66,20 @@ const PlexusBackground = () => {
       text: AI_KEYWORDS[Math.floor(Math.random() * AI_KEYWORDS.length)],
       opacity: Math.random() * 0.12 + 0.04,
       fadeDir: Math.random() > 0.5 ? 1 : -1,
+    }));
+
+    const robotCount = Math.max(4, Math.min(Math.floor(clamped / 12), 10));
+    robotsRef.current = Array.from({ length: robotCount }, () => ({
+      x: Math.random() * width,
+      y: Math.random() * height,
+      vx: (Math.random() - 0.5) * 0.2,
+      vy: (Math.random() - 0.5) * 0.2,
+      size: Math.random() * 20 + 25,
+      opacity: Math.random() * 0.1 + 0.06,
+      fadeDir: Math.random() > 0.5 ? 1 : -1,
+      rotation: Math.random() * 0.2 - 0.1,
+      rotSpeed: (Math.random() - 0.5) * 0.002,
+      variant: Math.floor(Math.random() * 3),
     }));
   }, []);
 
@@ -76,6 +104,64 @@ const PlexusBackground = () => {
     };
 
     resize();
+
+    const drawRobot = (ctx: CanvasRenderingContext2D, x: number, y: number, size: number, opacity: number, variant: number, rotation: number) => {
+      ctx.save();
+      ctx.translate(x, y);
+      ctx.rotate(rotation);
+      const c = `rgba(100, 230, 240, ${opacity})`;
+      ctx.strokeStyle = c;
+      ctx.fillStyle = `rgba(80, 220, 230, ${opacity * 0.4})`;
+      ctx.lineWidth = 1.2;
+
+      const s = size;
+      // Head
+      ctx.strokeRect(-s * 0.4, -s * 0.8, s * 0.8, s * 0.55);
+      // Eyes
+      ctx.fillStyle = `rgba(0, 255, 200, ${opacity * 1.5})`;
+      if (variant === 0) {
+        ctx.fillRect(-s * 0.22, -s * 0.6, s * 0.12, s * 0.12);
+        ctx.fillRect(s * 0.1, -s * 0.6, s * 0.12, s * 0.12);
+      } else if (variant === 1) {
+        ctx.beginPath(); ctx.arc(-s * 0.16, -s * 0.54, s * 0.08, 0, Math.PI * 2); ctx.fill();
+        ctx.beginPath(); ctx.arc(s * 0.16, -s * 0.54, s * 0.08, 0, Math.PI * 2); ctx.fill();
+      } else {
+        ctx.fillRect(-s * 0.25, -s * 0.62, s * 0.2, s * 0.08);
+        ctx.fillRect(s * 0.05, -s * 0.62, s * 0.2, s * 0.08);
+      }
+      // Antenna
+      ctx.strokeStyle = c;
+      ctx.beginPath(); ctx.moveTo(0, -s * 0.8); ctx.lineTo(0, -s * 1.05); ctx.stroke();
+      ctx.fillStyle = `rgba(0, 255, 200, ${opacity * 1.2})`;
+      ctx.beginPath(); ctx.arc(0, -s * 1.08, s * 0.05, 0, Math.PI * 2); ctx.fill();
+      // Body
+      ctx.strokeStyle = c;
+      ctx.fillStyle = `rgba(80, 220, 230, ${opacity * 0.2})`;
+      ctx.strokeRect(-s * 0.35, -s * 0.22, s * 0.7, s * 0.6);
+      ctx.fillRect(-s * 0.35, -s * 0.22, s * 0.7, s * 0.6);
+      // Body details (grid/panel)
+      ctx.fillStyle = `rgba(0, 255, 200, ${opacity * 0.6})`;
+      if (variant === 0 || variant === 2) {
+        for (let r = 0; r < 2; r++) for (let col = 0; col < 3; col++) {
+          ctx.fillRect(-s * 0.2 + col * s * 0.15, -s * 0.1 + r * s * 0.18, s * 0.08, s * 0.08);
+        }
+      } else {
+        ctx.strokeRect(-s * 0.2, -s * 0.12, s * 0.4, s * 0.3);
+        ctx.beginPath(); ctx.moveTo(-s * 0.2, 0.03 * s); ctx.lineTo(s * 0.2, 0.03 * s); ctx.stroke();
+      }
+      // Arms
+      ctx.strokeStyle = c;
+      ctx.lineWidth = 1.5;
+      ctx.beginPath(); ctx.moveTo(-s * 0.35, -s * 0.15); ctx.lineTo(-s * 0.55, -s * 0.3); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(-s * 0.55, -s * 0.3); ctx.lineTo(-s * 0.6, -s * 0.15); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(s * 0.35, -s * 0.15); ctx.lineTo(s * 0.55, -s * 0.3); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(s * 0.55, -s * 0.3); ctx.lineTo(s * 0.6, -s * 0.15); ctx.stroke();
+      // Legs
+      ctx.beginPath(); ctx.moveTo(-s * 0.15, s * 0.38); ctx.lineTo(-s * 0.15, s * 0.6); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(s * 0.15, s * 0.38); ctx.lineTo(s * 0.15, s * 0.6); ctx.stroke();
+
+      ctx.restore();
+    };
 
     const loop = () => {
       const w = window.innerWidth;
@@ -127,6 +213,20 @@ const PlexusBackground = () => {
         ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
         ctx.fill();
       }
+
+      // Draw floating robots
+      for (const robot of robotsRef.current) {
+        robot.x += robot.vx;
+        robot.y += robot.vy;
+        robot.rotation += robot.rotSpeed;
+        if (robot.x < robot.size || robot.x > w - robot.size) robot.vx *= -1;
+        if (robot.y < robot.size || robot.y > h - robot.size) robot.vy *= -1;
+        robot.opacity += robot.fadeDir * 0.0003;
+        if (robot.opacity > 0.2) { robot.opacity = 0.2; robot.fadeDir = -1; }
+        if (robot.opacity < 0.05) { robot.opacity = 0.05; robot.fadeDir = 1; }
+        drawRobot(ctx, robot.x, robot.y, robot.size, robot.opacity, robot.variant, robot.rotation);
+      }
+
       // Draw floating keywords
       ctx.font = "11px 'JetBrains Mono', monospace";
       ctx.textAlign = "center";
@@ -135,12 +235,9 @@ const PlexusBackground = () => {
         word.y += word.vy;
         if (word.x < 0 || word.x > w) word.vx *= -1;
         if (word.y < 20 || word.y > h) word.vy *= -1;
-
-        // Slow fade in/out
         word.opacity += word.fadeDir * 0.0005;
         if (word.opacity > 0.33) { word.opacity = 0.33; word.fadeDir = -1; }
         if (word.opacity < 0.08) { word.opacity = 0.08; word.fadeDir = 1; }
-
         ctx.fillStyle = `rgba(100, 230, 240, ${word.opacity})`;
         ctx.fillText(word.text, word.x, word.y);
       }
