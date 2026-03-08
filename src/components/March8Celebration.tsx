@@ -18,14 +18,14 @@ const March8Celebration = () => {
   const [items, setItems] = useState<FallingItem[]>([]);
 
   useEffect(() => {
-    const all: FallingItem[] = Array.from({ length: 200 }, (_, i) => {
+    const all: FallingItem[] = Array.from({ length: 100 }, (_, i) => {
       const isHeart = i % 4 === 0;
       const pool = isHeart ? HEART_EMOJIS : FLOWER_EMOJIS;
       return {
         id: i,
         x: Math.random() * 100,
-        delay: Math.random() * 12,
-        duration: 5 + Math.random() * 8,
+        delay: Math.random() * 15,
+        duration: 10 + Math.random() * 10,
         size: 16 + Math.random() * 30,
         rotation: Math.random() * 360,
         emoji: pool[Math.floor(Math.random() * pool.length)],
