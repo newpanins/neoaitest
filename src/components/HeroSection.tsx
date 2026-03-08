@@ -98,7 +98,7 @@ const HeroSection = () => {
             animate={{ backgroundPosition: ["100% 0", "0% 0", "100% 0"] }}
             transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
           >
-            🌸 С 8 Марта! С Международным женским днём! 💖 🌺
+            С 8 Марта! С Международным женским днём!
           </motion.span>
           <motion.p
             className="mt-2 text-sm md:text-lg font-medium"
