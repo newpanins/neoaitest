@@ -88,29 +88,39 @@ const HeroSection = () => {
           transition={{ duration: 0.8, delay: 0.7 }}
         >
           <motion.div
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl"
+            className="inline-flex flex-col sm:flex-row items-center gap-3 px-8 py-5 rounded-2xl"
             style={{
-              background: "linear-gradient(135deg, hsl(340 60% 15% / 0.5), hsl(330 50% 12% / 0.5))",
-              border: "1px solid hsl(340 70% 55% / 0.2)",
-              boxShadow: "0 0 30px hsl(340 80% 60% / 0.1)",
+              background: "linear-gradient(135deg, hsl(340 60% 15% / 0.6), hsl(330 50% 10% / 0.6))",
+              border: "1px solid hsl(340 70% 55% / 0.3)",
+              boxShadow: "0 0 40px hsl(340 80% 60% / 0.15), 0 0 80px hsl(330 70% 50% / 0.08)",
             }}
           >
-            <span className="text-2xl">🌸</span>
+            <span className="text-3xl md:text-4xl">🌸</span>
             <motion.span
-              className="text-sm md:text-base font-medium"
+              className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold"
               style={{
-                background: "linear-gradient(135deg, hsl(340 85% 70%), hsl(20 90% 70%), hsl(340 85% 70%))",
-                backgroundSize: "200% 100%",
+                background: "linear-gradient(90deg, hsl(340 90% 72%), hsl(20 95% 72%), hsl(45 100% 65%), hsl(280 70% 72%), hsl(340 90% 72%))",
+                backgroundSize: "300% 100%",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
+                filter: "drop-shadow(0 0 12px hsl(340 80% 60% / 0.4))",
               }}
               animate={{ backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
             >
               С 8 Марта! С Международным женским днём! 💖
             </motion.span>
-            <span className="text-2xl">🌺</span>
+            <span className="text-3xl md:text-4xl">🌺</span>
           </motion.div>
+          <motion.p
+            className="mt-3 text-sm md:text-base"
+            style={{ color: "hsl(340 40% 70% / 0.7)" }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.2 }}
+          >
+            Пусть каждый день будет наполнен теплом и вдохновением ✨
+          </motion.p>
         </motion.div>
 
         {/* Stats */}

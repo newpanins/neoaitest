@@ -1,56 +1,54 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
-interface Petal {
+interface FallingItem {
   id: number;
   x: number;
   delay: number;
   duration: number;
   size: number;
   rotation: number;
-  color: string;
+  emoji: string;
 }
 
-const COLORS = [
-  "hsl(340 80% 65%)",
-  "hsl(330 70% 75%)",
-  "hsl(350 85% 60%)",
-  "hsl(20 90% 70%)",
-  "hsl(280 60% 70%)",
-  "hsl(310 75% 68%)",
-];
+const FLOWER_EMOJIS = ["🌸", "🌺", "🌷", "🌹", "💐", "🌻", "🌼", "💮", "🏵️", "❀", "✿"];
+const HEART_EMOJIS = ["💖", "💗", "💕", "💝", "🩷", "🌸"];
 
 const March8Celebration = () => {
-  const [petals, setPetals] = useState<Petal[]>([]);
+  const [items, setItems] = useState<FallingItem[]>([]);
 
   useEffect(() => {
-    const items: Petal[] = Array.from({ length: 20 }, (_, i) => ({
-      id: i,
-      x: Math.random() * 100,
-      delay: Math.random() * 8,
-      duration: 5 + Math.random() * 6,
-      size: 14 + Math.random() * 16,
-      rotation: Math.random() * 360,
-      color: COLORS[Math.floor(Math.random() * COLORS.length)],
-    }));
-    setPetals(items);
+    const all: FallingItem[] = Array.from({ length: 55 }, (_, i) => {
+      const isHeart = i % 6 === 0;
+      const pool = isHeart ? HEART_EMOJIS : FLOWER_EMOJIS;
+      return {
+        id: i,
+        x: Math.random() * 100,
+        delay: Math.random() * 10,
+        duration: 5 + Math.random() * 7,
+        size: 18 + Math.random() * 28,
+        rotation: Math.random() * 360,
+        emoji: pool[Math.floor(Math.random() * pool.length)],
+      };
+    });
+    setItems(all);
   }, []);
 
   return (
     <>
-      {/* Soft falling petals — no pointer events, behind content */}
+      {/* Dense falling flowers & hearts */}
       <div className="fixed inset-0 z-[3] pointer-events-none overflow-hidden">
-        {petals.map((p) => (
+        {items.map((p) => (
           <motion.div
             key={p.id}
             className="absolute top-0"
-            style={{ left: `${p.x}%` }}
-            initial={{ y: -30, opacity: 0, rotate: p.rotation }}
+            style={{ left: `${p.x}%`, fontSize: p.size }}
+            initial={{ y: -50, opacity: 0, rotate: p.rotation }}
             animate={{
-              y: ["0vh", "105vh"],
-              opacity: [0, 0.7, 0.7, 0.4, 0],
-              rotate: [p.rotation, p.rotation + 200],
-              x: [0, Math.sin(p.id) * 40, Math.cos(p.id) * -30],
+              y: ["0vh", "108vh"],
+              opacity: [0, 0.9, 0.9, 0.5, 0],
+              rotate: [p.rotation, p.rotation + 180 + Math.random() * 180],
+              x: [0, Math.sin(p.id) * 60, Math.cos(p.id) * -50, Math.sin(p.id + 2) * 40],
             }}
             transition={{
               duration: p.duration,
@@ -59,26 +57,31 @@ const March8Celebration = () => {
               ease: "linear",
             }}
           >
-            <svg width={p.size} height={p.size} viewBox="0 0 24 24" fill={p.color} opacity="0.6">
-              <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-            </svg>
+            {p.emoji}
           </motion.div>
         ))}
       </div>
 
-      {/* Side bouquets — left */}
-      <div className="fixed left-2 md:left-6 top-1/2 -translate-y-1/2 z-[3] pointer-events-none flex flex-col gap-3">
-        {["🌸", "🌷", "🌺", "🌹"].map((emoji, i) => (
+      {/* Left bouquet column */}
+      <div className="fixed left-1 md:left-4 top-[15%] bottom-[15%] z-[3] pointer-events-none flex flex-col justify-between items-center">
+        {["🌸", "🌷", "🌺", "🌹", "💐", "🌻", "🌼", "🌸"].map((emoji, i) => (
           <motion.div
             key={`left-${i}`}
-            className="text-2xl md:text-4xl"
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0, rotate: [0, 8, -8, 0], scale: [1, 1.08, 1] }}
+            className="text-3xl md:text-5xl"
+            initial={{ opacity: 0, x: -40 }}
+            animate={{
+              opacity: 1,
+              x: 0,
+              rotate: [0, 12, -12, 0],
+              scale: [1, 1.15, 1],
+              y: [0, -6, 6, 0],
+            }}
             transition={{
-              opacity: { delay: 0.3 + i * 0.2, duration: 0.6 },
-              x: { delay: 0.3 + i * 0.2, duration: 0.6 },
-              rotate: { duration: 3 + i * 0.5, repeat: Infinity, delay: i * 0.3 },
-              scale: { duration: 3 + i * 0.5, repeat: Infinity, delay: i * 0.3 },
+              opacity: { delay: 0.2 + i * 0.15, duration: 0.5 },
+              x: { delay: 0.2 + i * 0.15, duration: 0.5 },
+              rotate: { duration: 3 + i * 0.3, repeat: Infinity, delay: i * 0.2 },
+              scale: { duration: 3 + i * 0.3, repeat: Infinity, delay: i * 0.2 },
+              y: { duration: 2.5 + i * 0.4, repeat: Infinity, delay: i * 0.3 },
             }}
           >
             {emoji}
@@ -86,19 +89,51 @@ const March8Celebration = () => {
         ))}
       </div>
 
-      {/* Side bouquets — right */}
-      <div className="fixed right-2 md:right-6 top-1/2 -translate-y-1/2 z-[3] pointer-events-none flex flex-col gap-3">
-        {["💐", "🌻", "🌼", "💮"].map((emoji, i) => (
+      {/* Right bouquet column */}
+      <div className="fixed right-1 md:right-4 top-[15%] bottom-[15%] z-[3] pointer-events-none flex flex-col justify-between items-center">
+        {["💐", "🌹", "🌼", "🌺", "🌷", "💮", "🌸", "🌻"].map((emoji, i) => (
           <motion.div
             key={`right-${i}`}
+            className="text-3xl md:text-5xl"
+            initial={{ opacity: 0, x: 40 }}
+            animate={{
+              opacity: 1,
+              x: 0,
+              rotate: [0, -10, 10, 0],
+              scale: [1, 1.12, 1],
+              y: [0, 5, -5, 0],
+            }}
+            transition={{
+              opacity: { delay: 0.3 + i * 0.15, duration: 0.5 },
+              x: { delay: 0.3 + i * 0.15, duration: 0.5 },
+              rotate: { duration: 3.5 + i * 0.3, repeat: Infinity, delay: i * 0.25 },
+              scale: { duration: 3.5 + i * 0.3, repeat: Infinity, delay: i * 0.25 },
+              y: { duration: 2.8 + i * 0.3, repeat: Infinity, delay: i * 0.2 },
+            }}
+          >
+            {emoji}
+          </motion.div>
+        ))}
+      </div>
+
+      {/* Top scattered flowers */}
+      <div className="fixed top-16 left-0 right-0 z-[3] pointer-events-none flex justify-around px-12">
+        {["🌸", "💖", "🌺", "🌷", "💐"].map((emoji, i) => (
+          <motion.div
+            key={`top-${i}`}
             className="text-2xl md:text-4xl"
-            initial={{ opacity: 0, x: 30 }}
-            animate={{ opacity: 1, x: 0, rotate: [0, -10, 10, 0], scale: [1, 1.1, 1] }}
+            initial={{ opacity: 0, y: -20 }}
+            animate={{
+              opacity: 1,
+              y: [0, -8, 0],
+              rotate: [0, 15, -15, 0],
+              scale: [1, 1.1, 1],
+            }}
             transition={{
               opacity: { delay: 0.5 + i * 0.2, duration: 0.6 },
-              x: { delay: 0.5 + i * 0.2, duration: 0.6 },
-              rotate: { duration: 3.5 + i * 0.4, repeat: Infinity, delay: i * 0.4 },
-              scale: { duration: 3.5 + i * 0.4, repeat: Infinity, delay: i * 0.4 },
+              y: { duration: 3 + i * 0.5, repeat: Infinity, delay: i * 0.3 },
+              rotate: { duration: 4 + i * 0.3, repeat: Infinity, delay: i * 0.2 },
+              scale: { duration: 3 + i * 0.4, repeat: Infinity, delay: i * 0.2 },
             }}
           >
             {emoji}
