@@ -80,6 +80,39 @@ const HeroSection = () => {
           Ответ в течение 24 часов
         </motion.p>
 
+        {/* 8 March greeting */}
+        <motion.div
+          className="mt-10 text-center"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.7 }}
+        >
+          <motion.div
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl"
+            style={{
+              background: "linear-gradient(135deg, hsl(340 60% 15% / 0.5), hsl(330 50% 12% / 0.5))",
+              border: "1px solid hsl(340 70% 55% / 0.2)",
+              boxShadow: "0 0 30px hsl(340 80% 60% / 0.1)",
+            }}
+          >
+            <span className="text-2xl">🌸</span>
+            <motion.span
+              className="text-sm md:text-base font-medium"
+              style={{
+                background: "linear-gradient(135deg, hsl(340 85% 70%), hsl(20 90% 70%), hsl(340 85% 70%))",
+                backgroundSize: "200% 100%",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+              }}
+              animate={{ backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            >
+              С 8 Марта! С Международным женским днём! 💖
+            </motion.span>
+            <span className="text-2xl">🌺</span>
+          </motion.div>
+        </motion.div>
+
         {/* Stats */}
         <motion.div
           className="grid grid-cols-3 gap-8 max-w-lg mx-auto mt-20"
