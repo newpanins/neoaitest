@@ -18,7 +18,7 @@ const March8Celebration = () => {
   const [items, setItems] = useState<FallingItem[]>([]);
 
   useEffect(() => {
-    const all: FallingItem[] = Array.from({ length: 70 }, (_, i) => {
+    const all: FallingItem[] = Array.from({ length: 56 }, (_, i) => {
       const isHeart = i % 4 === 0;
       const pool = isHeart ? HEART_EMOJIS : FLOWER_EMOJIS;
       return {
