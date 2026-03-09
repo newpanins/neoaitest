@@ -6,13 +6,11 @@ import ProjectsSection from "@/components/ProjectsSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import PlexusBackground from "@/components/PlexusBackground";
-import March8Celebration from "@/components/March8Celebration";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background noise-bg relative">
       <PlexusBackground />
-      <March8Celebration />
       <div className="relative" style={{ zIndex: 2 }}>
       <Navbar />
       <HeroSection />

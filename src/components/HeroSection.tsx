@@ -80,41 +80,6 @@ const HeroSection = () => {
           Ответ в течение 24 часов
         </motion.p>
 
-        {/* 8 March greeting */}
-        <motion.div
-          className="mt-10 text-center"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.7 }}
-        >
-          <motion.span
-            className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold inline-block"
-            style={{
-              background: "linear-gradient(90deg, hsl(340 90% 72%), hsl(320 85% 75%), hsl(350 95% 68%), hsl(10 90% 72%), hsl(340 90% 72%))",
-              backgroundSize: "200% 100%",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-            }}
-            animate={{ backgroundPosition: ["100% 0", "0% 0", "100% 0"] }}
-            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-          >
-            С 8 Марта! С Международным женским днём!
-          </motion.span>
-          <motion.p
-            className="mt-2 text-sm md:text-lg font-medium"
-            style={{
-              background: "linear-gradient(90deg, hsl(330 70% 75%), hsl(350 80% 70%), hsl(330 70% 75%))",
-              backgroundSize: "200% 100%",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-            }}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1, backgroundPosition: ["100% 0", "0% 0", "100% 0"] }}
-            transition={{ opacity: { delay: 1.2 }, backgroundPosition: { duration: 4, repeat: Infinity, ease: "easeInOut" } }}
-          >
-            Пусть каждый день будет наполнен теплом и вдохновением ✨
-          </motion.p>
-        </motion.div>
 
         {/* Stats */}
         <motion.div
