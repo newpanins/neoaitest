@@ -77,7 +77,7 @@ const HeroSection = () => {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.55 }}
         >
-          Ответ в рабочее время
+          Ответ в течение 24 часов
         </motion.p>
 
 
