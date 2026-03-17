@@ -9,7 +9,7 @@ const contactLinks = [
     label: "Telegram",
     value: "@SmartAiTeam",
     href: "https://t.me/SmartAiTeam",
-    description: "Быстрый ответ в течение часа",
+    description: "Напишите — обсудим ваш проект",
   },
   {
     icon: Mail,
