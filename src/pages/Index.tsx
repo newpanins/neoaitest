@@ -15,6 +15,7 @@ const Index = () => {
       <div className="relative" style={{ zIndex: 2 }}>
       <Navbar />
       <HeroSection />
+      <OracleSection />
       <AboutSection />
       <ServicesSection />
       <ProjectsSection />
