@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
+import OracleSection from "@/components/OracleSection";
 import AboutSection from "@/components/AboutSection";
 import ServicesSection from "@/components/ServicesSection";
 import ProjectsSection from "@/components/ProjectsSection";
@@ -14,6 +15,7 @@ const Index = () => {
       <div className="relative" style={{ zIndex: 2 }}>
       <Navbar />
       <HeroSection />
+      <OracleSection />
       <AboutSection />
       <ServicesSection />
       <ProjectsSection />
