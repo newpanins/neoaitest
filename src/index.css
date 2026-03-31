@@ -1,4 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap');
+@import '@fontsource/geist-sans/400.css';
+@import '@fontsource/geist-sans/500.css';
+@import '@fontsource/geist-sans/600.css';
+@import '@fontsource/geist-sans/700.css';
 
 @tailwind base;
 @tailwind components;
@@ -6,47 +10,46 @@
 
 @layer base {
   :root {
-    --background: 220 12% 3%;
-    --foreground: 210 15% 90%;
+    --background: 260 87% 3%;
+    --foreground: 40 6% 95%;
 
-    --card: 220 10% 6%;
-    --card-foreground: 210 20% 92%;
+    --card: 260 60% 6%;
+    --card-foreground: 40 6% 92%;
 
-    --popover: 220 18% 7%;
-    --popover-foreground: 210 20% 92%;
+    --popover: 260 60% 7%;
+    --popover-foreground: 40 6% 92%;
 
     --primary: 185 90% 58%;
-    --primary-foreground: 220 20% 4%;
+    --primary-foreground: 260 87% 4%;
 
-    --secondary: 220 10% 9%;
-    --secondary-foreground: 210 15% 80%;
+    --secondary: 260 30% 9%;
+    --secondary-foreground: 40 6% 80%;
 
-    --muted: 220 10% 8%;
-    --muted-foreground: 215 10% 42%;
+    --muted: 260 30% 8%;
+    --muted-foreground: 260 10% 42%;
 
     --accent: 260 80% 65%;
-    --accent-foreground: 210 20% 95%;
+    --accent-foreground: 40 6% 95%;
 
     --destructive: 0 84% 60%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 40 6% 98%;
 
-    --border: 220 8% 11%;
-    --input: 220 8% 11%;
-    --ring: 185 80% 55%;
+    --border: 260 20% 11%;
+    --input: 260 20% 11%;
+    --ring: 260 80% 55%;
 
     --radius: 0.75rem;
 
-    --glow-primary: 185 80% 55%;
-    --glow-accent: 260 70% 60%;
+    --hero-sub: 40 6% 82%;
 
-    --sidebar-background: 220 18% 6%;
-    --sidebar-foreground: 210 20% 85%;
-    --sidebar-primary: 185 80% 55%;
-    --sidebar-primary-foreground: 220 20% 4%;
-    --sidebar-accent: 220 15% 12%;
-    --sidebar-accent-foreground: 210 20% 85%;
-    --sidebar-border: 220 15% 14%;
-    --sidebar-ring: 185 80% 55%;
+    --sidebar-background: 260 60% 6%;
+    --sidebar-foreground: 40 6% 85%;
+    --sidebar-primary: 260 80% 55%;
+    --sidebar-primary-foreground: 260 87% 4%;
+    --sidebar-accent: 260 30% 12%;
+    --sidebar-accent-foreground: 40 6% 85%;
+    --sidebar-border: 260 30% 14%;
+    --sidebar-ring: 260 80% 55%;
   }
 }
 
@@ -55,20 +58,22 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground font-sans antialiased;
-    background-image: 
-      radial-gradient(ellipse 80% 50% at 50% -10%, hsl(185 90% 58% / 0.04), transparent),
-      radial-gradient(ellipse 60% 40% at 80% 60%, hsl(260 80% 65% / 0.03), transparent),
-      radial-gradient(ellipse 70% 50% at 10% 90%, hsl(185 90% 58% / 0.025), transparent);
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Geist Sans', sans-serif;
   }
 }
 
 @layer utilities {
+  .font-headline {
+    font-family: 'General Sans', sans-serif;
+  }
+
+  .font-body {
+    font-family: 'Geist Sans', sans-serif;
+  }
+
   .font-mono {
     font-family: 'JetBrains Mono', monospace;
-  }
-  .font-sans {
-    font-family: 'Inter', sans-serif;
   }
 
   .text-gradient-primary {
@@ -121,22 +126,22 @@
   }
 
   .glow-primary {
-    box-shadow: 0 0 25px hsl(185 90% 58% / 0.25), 0 0 80px hsl(185 90% 58% / 0.08);
+    box-shadow: 0 0 25px hsl(260 80% 65% / 0.25), 0 0 80px hsl(260 80% 65% / 0.08);
   }
 
   .glow-border {
-    border: 1px solid hsl(185 90% 58% / 0.25);
-    box-shadow: 0 0 20px hsl(185 90% 58% / 0.08), inset 0 0 20px hsl(185 90% 58% / 0.03);
+    border: 1px solid hsl(260 80% 65% / 0.25);
+    box-shadow: 0 0 20px hsl(260 80% 65% / 0.08), inset 0 0 20px hsl(260 80% 65% / 0.03);
   }
 
   .glass {
-    background: hsl(220 10% 5% / 0.7);
+    background: hsl(260 60% 5% / 0.7);
     backdrop-filter: blur(24px);
-    border: 1px solid hsl(185 90% 58% / 0.06);
+    border: 1px solid hsl(260 80% 65% / 0.06);
   }
 
   .section-gradient-top {
-    background-image: linear-gradient(180deg, hsl(185 90% 58% / 0.03) 0%, transparent 40%);
+    background-image: linear-gradient(180deg, hsl(260 80% 65% / 0.03) 0%, transparent 40%);
   }
 
   .section-gradient-bottom {
@@ -145,8 +150,8 @@
 
   .grid-bg {
     background-image:
-      linear-gradient(hsl(220 15% 14% / 0.4) 1px, transparent 1px),
-      linear-gradient(90deg, hsl(220 15% 14% / 0.4) 1px, transparent 1px);
+      linear-gradient(hsl(260 30% 14% / 0.4) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(260 30% 14% / 0.4) 1px, transparent 1px);
     background-size: 60px 60px;
   }
 
@@ -160,5 +165,45 @@
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E");
     pointer-events: none;
     z-index: 1;
+  }
+
+  .liquid-glass {
+    background: rgba(255, 255, 255, 0.01);
+    background-blend-mode: luminosity;
+    backdrop-filter: blur(4px);
+    border: none;
+    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .liquid-glass::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1.4px;
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.45) 0%,
+      rgba(255, 255, 255, 0.15) 20%,
+      rgba(255, 255, 255, 0) 40%,
+      rgba(255, 255, 255, 0) 60%,
+      rgba(255, 255, 255, 0.15) 80%,
+      rgba(255, 255, 255, 0.45) 100%
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  @keyframes marquee-scroll {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .animate-marquee {
+    animation: marquee-scroll 20s linear infinite;
   }
 }
