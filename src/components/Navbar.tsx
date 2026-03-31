@@ -1,48 +1,48 @@
-import { ChevronDown } from "lucide-react";
-import logoImg from "@/assets/logo.png";
+import { motion } from "framer-motion";
+import { MessageSquare } from "lucide-react";
 
 const Navbar = () => {
   return (
-    <div className="relative z-20">
-      <nav className="w-full py-5 px-8 flex items-center justify-between">
-        {/* Logo */}
-        <a href="#">
-          <img src={logoImg} alt="SmartAI" className="h-8" />
+    <motion.nav
+      className="fixed top-0 left-0 right-0 z-50 glass"
+      initial={{ y: -80 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+    >
+      <div className="container mx-auto px-6 py-4 flex items-center justify-between">
+        <a href="#" className="flex flex-col">
+          <span className="font-bold text-lg text-foreground leading-tight">SmartAI</span>
+          <span className="text-[10px] text-shimmer leading-tight tracking-wide font-medium">Умные решения для вашего бизнеса</span>
         </a>
 
-        {/* Center nav */}
-        <div className="hidden md:flex items-center gap-6">
+        <div className="hidden md:flex items-center gap-8">
           {[
-            { label: "Услуги", chevron: true, href: "#services" },
-            { label: "Обо мне", chevron: false, href: "#about" },
-            { label: "Проекты", chevron: false, href: "#projects" },
-            { label: "Контакт", chevron: true, href: "#contact" },
-          ].map((item) => (
+            { href: "#services", label: "Услуги" },
+            { href: "#about", label: "Обо мне" },
+            { href: "#projects", label: "Проекты" },
+            { href: "#contact", label: "Контакт" },
+          ].map((link) => (
             <a
-              key={item.label}
-              href={item.href}
-              className="flex items-center gap-1 text-foreground/90 hover:text-foreground transition-colors text-sm"
+              key={link.href}
+              href={link.href}
+              className="text-sm text-muted-foreground hover-shimmer"
             >
-              {item.label}
-              {item.chevron && <ChevronDown className="w-3.5 h-3.5" />}
+              {link.label}
             </a>
           ))}
         </div>
 
-        {/* CTA */}
         <a
-          href="https://t.me/SmartAiTeam"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="rounded-full px-4 py-2 border border-foreground/20 text-foreground text-sm font-medium hover:bg-foreground/10 transition-all"
-        >
-          Связаться
-        </a>
-      </nav>
-
-      {/* Divider */}
-      <div className="mt-[3px] h-px bg-gradient-to-r from-transparent via-foreground/20 to-transparent" />
-    </div>
+            href="https://t.me/SmartAiTeam"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-10 h-10 rounded-lg flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/10 transition-all"
+            aria-label="Telegram"
+          >
+            <MessageSquare className="w-5 h-5" />
+          </a>
+      </div>
+    </motion.nav>
   );
 };
 
