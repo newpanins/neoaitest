@@ -89,7 +89,7 @@ const HeroSection = () => {
           transition={{ duration: 1, delay: 0.7 }}
         >
           {[
-            { value: "30-70%", label: "Сокращение ручного труда" },
+            { value: "50-100%", label: "Сокращение ручного труда" },
             { value: "50+", label: "Реализованных проектов" },
             { value: "24/7", label: "Агенты без перерывов" },
           ].map((stat) => (
