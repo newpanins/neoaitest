@@ -90,7 +90,7 @@ const HeroSection = () => {
         >
           {[
             { value: "30-70%", label: "Сокращение ручного труда" },
-            { value: "10+", label: "Реализованных проектов" },
+            { value: "50+", label: "Реализованных проектов" },
             { value: "24/7", label: "Агенты без перерывов" },
           ].map((stat) => (
             <div key={stat.label} className="text-center">
