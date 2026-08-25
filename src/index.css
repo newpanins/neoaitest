@@ -63,12 +63,24 @@
   }
 }
 
+@layer base {
+  h1, h2, h3, h4, h5, h6 {
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter Tight', 'Inter', sans-serif;
+    letter-spacing: -0.03em;
+  }
+}
+
 @layer utilities {
   .font-mono {
     font-family: 'JetBrains Mono', monospace;
   }
   .font-sans {
-    font-family: 'Inter', sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Inter', sans-serif;
+    letter-spacing: -0.011em;
+  }
+  .font-display {
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter Tight', 'Inter', sans-serif;
+    letter-spacing: -0.03em;
   }
 
   .text-gradient-primary {
