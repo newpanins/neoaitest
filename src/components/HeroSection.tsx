@@ -89,8 +89,8 @@ const HeroSection = () => {
           transition={{ duration: 1, delay: 0.7 }}
         >
           {[
-            { value: "50+", label: "Реализованных решений" },
-            { value: "3 года", label: "В AI‑разработке" },
+            { value: "30-70%", label: "Сокращение ручного труда" },
+            { value: "10+", label: "Реализованных проектов" },
             { value: "24/7", label: "Агенты без перерывов" },
           ].map((stat) => (
             <div key={stat.label} className="text-center">
