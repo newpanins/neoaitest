@@ -2,11 +2,12 @@ import { motion } from "framer-motion";
 import { Bot, Brain, MessageSquare, Workflow } from "lucide-react";
 
 const techStack = [
-  "LangChain",
-  "RAG",
-  "Multi‑agent системы",
-  "Интеграции с CRM",
-  "Внутренние сервисы",
+  "Python",
+  "Claude API",
+  "OpenAI API",
+  "Telegram Bot API",
+  "PostgreSQL",
+  "REST API интеграции",
 ];
 
 const AboutSection = () => {

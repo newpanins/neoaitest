@@ -7,31 +7,31 @@ import projectResearch from "@/assets/project-research.jpg";
 
 const projects = [
   {
-    title: "AI Sales Agent",
+    title: "AI-агент по курсам валют",
     image: projectSales,
-    description: "Помогает отделу продаж: отвечает на обращения, квалифицирует лидов и назначает встречи, не теряя заявки ночью и в выходные.",
-    tags: ["LangChain", "GPT-4", "Zapier"],
+    description: "Собирает курсы валют и криптовалюты сразу из 10+ источников (ЦБ РФ, банки, обменники, P2P-биржи), приводит к единому виду и присылает персональные уведомления, когда курс достиг нужного уровня.",
+    tags: ["Python", "PostgreSQL", "REST API"],
     status: "Production",
   },
   {
-    title: "Document Analyst",
+    title: "Инструменты для продавцов Wildberries/Ozon",
     image: projectDocument,
-    description: "Ускоряет работу с юридическими документами: находит ключевые условия, отвечает на вопросы по договору и снижает время анализа.",
-    tags: ["LlamaIndex", "Pinecone", "Claude"],
+    description: "Анализ конкурентов, автоматическое управление ценами и подбор SEO-ключевых слов для карточек товаров с помощью AI.",
+    tags: ["Claude API", "WB/Ozon API", "Python"],
     status: "Production",
   },
   {
-    title: "DevOps Agent",
+    title: "Автопостинг видео в VK Clips",
     image: projectDevops,
-    description: "Следит за инфраструктурой, реагирует на инциденты и готовит отчёты, снижая нагрузку на DevOps‑команду.",
-    tags: ["CrewAI", "Kubernetes", "Grafana"],
+    description: "Бот сам собирает короткие видеоролики на основе постов Telegram-канала (фон, текст, музыка) и публикует их в VK Clips после модерации.",
+    tags: ["ffmpeg", "VK API", "Telegram Bot API"],
     status: "Beta",
   },
   {
-    title: "Research Assistant",
+    title: "AI-помощник по поиску работы",
     image: projectResearch,
-    description: "Собирает и структурирует информацию о рынке и конкурентах, готовит черновики отчётов и презентаций.",
-    tags: ["AutoGPT", "Serper", "PostgreSQL"],
+    description: "Мониторит вакансии по заданным критериям, ведёт трекер откликов и сам пишет персональные сопроводительные письма под каждую вакансию через AI.",
+    tags: ["Claude API", "HH.ru API", "Python"],
     status: "Production",
   },
 ];
